@@ -14,30 +14,21 @@
     <script type="text/babel">
         const root = document.getElementById("root");
         // Using JSX Style
-        const Title=()=> (
-            <h2 id="title"
-            onMouseEnter={() => console.log("mouseEnter")}
-                >
-            Hello I'm a title 
-            </h2>
+        let counter =0;
+        function countUp(){
+            counter = counter + 1;
+            render();
+        }
+        function render(){
+            ReactDOM.render(<Container />,root);
+        }
+        const Container = () => (
+        <div>
+            <h3>Total Clicks: {counter}</h3>
+            <button onClick={countUp}>Click me</button>
+        </div>
+        
         );
-        // Using JSX to build button
-        const Button= () => (<button
-            style={{
-                backgroundColor:"red",
-            }}
-            onClick={() =>console.log("Button")}>
-                Click me</button>
-        );
-
-
-
-        const Container = (
-            <div>
-                <Title /> 
-                <Button />   
-            </div>
-        )
-        ReactDOM.render(Container,root);
+        ReactDOM.render(<Container />,root);
     </script>
 </html>
